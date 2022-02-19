@@ -25,11 +25,15 @@ function isUsermovies(lists, value){
 }
 let Poster = ({ id, release_date, title, overview, poster_path, onClick }) => {
   useEffect(() => {
-    const localStorage = window.localStorage;
-    if(typeof window !== 'undefined')
-    user = localStorage.getItem('user') ? JSON.parse(localStorage.getItem('user')) : null
-    
-    if(localStorage.getItem('isloggedin')==null) Router.push('/login')
+    try{
+      const localStorage = window.localStorage;
+      if(typeof window !== 'undefined')
+      user = localStorage.getItem('user') ? JSON.parse(localStorage.getItem('user')) : null
+      
+      if(localStorage.getItem('isloggedin')==null) Router.push('/login')
+    }catch(e){
+      Router.push('/login')
+    }
   })
   var config = {
     public_key: process.env.PUBLIC_KEY,
@@ -170,20 +174,25 @@ export default function Home({moviedata}) {
 
 
 export async function getServerSideProps(){
-  const url = 'https://api.themoviedb.org/3/movie/popular?language=en-US&page=1'
-  const bearer = 'Bearer '+ process.env.MOVIE_API_KEY
-  const res = await axios(url, {
-    method: 'GET',
-    withCredentials: true,
-    credentials: 'include',
-    headers: {
-        'Authorization': bearer,
-        'X-FP-API-KEY': 'iphone', //it can be iPhone or your any other attribute
-        'Content-Type': 'application/json'
-    }
-  })
-  console.log(res.data)
-  var moviedata = [res.data]
-  
-  return  { props:{moviedata} }
+  try{
+    const url = 'https://api.themoviedb.org/3/movie/popular?language=en-US&page=1'
+    const bearer = 'Bearer '+ process.env.MOVIE_API_KEY
+    const res = await axios(url, {
+      method: 'GET',
+      withCredentials: true,
+      credentials: 'include',
+      headers: {
+          'Authorization': bearer,
+          'X-FP-API-KEY': 'iphone', //it can be iPhone or your any other attribute
+          'Content-Type': 'application/json'
+      }
+    })
+    console.log(res.data)
+    var moviedata = [res.data]
+    
+    return  { props:{moviedata} }
+  }catch(e){
+    var moviedata = []
+    return  { props:{moviedata} }
+  }
 }

@@ -18,6 +18,12 @@ let Loginform = () => {
             if(event.target.email.value == user['email'] && event.target.password.value == user['password'] ){
 
                 localStorage.setItem('isloggedin',true)
+                if(typeof window !== 'undefined'){
+                    if(localStorage.getItem('user')==null){      
+                        var userdata = JSON.stringify(users)
+                        localStorage.setItem('user',userdata)  
+                    }
+                }
                 Router.push('/')
             }else{
                 setIsError(true)
