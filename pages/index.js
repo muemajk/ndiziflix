@@ -36,7 +36,7 @@ let Poster = ({ id, release_date, title, overview, poster_path, onClick }) => {
     }
   })
   var config = {
-    public_key: process.env.PUBLIC_KEY,
+    public_key: 'FLWPUBK_TEST-b00d0df838fcd4516f604d8cfa0608e3-X' , //process.env.PUBLIC_KEY,
     tx_ref: Date.now(),
     amount: 150,
     currency: "KES",
@@ -175,6 +175,9 @@ export default function Home({moviedata}) {
 
 export async function getServerSideProps(){
   try{
+    if(typeof window !== 'undefined'){
+      user = localStorage.getItem('user')
+    }
     const url = 'https://api.themoviedb.org/3/movie/popular?language=en-US&page=1'
     const bearer = 'Bearer '+ process.env.MOVIE_API_KEY
     const res = await axios(url, {
@@ -187,13 +190,12 @@ export async function getServerSideProps(){
           'Content-Type': 'application/json'
       }
     })
-    console.log(res.data)
     var moviedata = [res.data]
     
     return  { props:{moviedata} }
   }catch(e){
     var moviedata = []
-    console.log("errrrrr")
+    console.log("errrrrr"+e)
     return  { props:{moviedata} }
   }
 }
