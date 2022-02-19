@@ -38,7 +38,7 @@ let Poster = ({ id, release_date, title, overview, poster_path, onClick }) => {
   var config = {
     public_key: 'FLWPUBK-16e8636fb8c674d4adefedd568081c3b-X', //process.env.PUBLIC_KEY,
     tx_ref: Date.now(),
-    amount: 150,
+    amount: 5,
     currency: "KES",
     country: "KE",
     payment_options: " ",
