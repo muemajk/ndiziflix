@@ -193,6 +193,7 @@ export async function getServerSideProps(){
     return  { props:{moviedata} }
   }catch(e){
     var moviedata = []
+    console.log("errrrrr")
     return  { props:{moviedata} }
   }
 }
