@@ -1,0 +1,177 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat:100,400');
+.container {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: thin;
+  color: white;
+}
+
+.movieImg {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+}
+.navbar {
+  position: absolute;
+  top: 2em;
+  right: 5em;
+  width: 20em;
+  display: flex;
+  flex-direction: row;
+}
+
+.navbar ul {
+  display: flex;
+  flex-direction: row;
+  width:100%;
+  justify-content: space-between;
+}
+
+.navbar li {
+  list-style: none;
+  font-weight: 100;
+}
+
+
+
+.movieCard {
+  position: relative;
+  box-sizing: border-box;
+  width: 40%;
+  max-width: 800px;
+  height: 300px;
+  background-position: center;
+  background-size: cover;
+  margin: 4vh auto;
+  border-radius: 4px;
+  box-shadow: 2px 3px 12px rgba(0, 0, 0, .4);
+  color: white;
+  padding: 2vh 3%;
+}
+.movieCard:after{
+  content: "";
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 4px;
+  background: linear-gradient(to right, rgba(40,40,60,1) 0%,rgba(40,0,60,0) 90%);
+  background-blend-mode: multiply;
+  will-change: transform;
+  z-index: 0;
+}
+.movieCard i {
+  font-size: .7em;
+  color: #ff5b84;
+}
+.movieCard h1 {
+  font-size: 170%;
+  position: relative;
+  z-index: 10;
+}
+.movieCard span {
+  display: inline-block;
+  position: relative;
+  z-index: 10;
+  margin-right: 80px;
+  color: rgb(210, 210, 210);
+}
+
+.bought {
+  display: block;
+  border: 1px solid white;
+  border-radius: 4px;
+  position: absolute;
+  bottom: 2em;
+  left: 5em;
+  z-index: 10;
+  color: white;
+  padding: 10px;
+  text-align: center;
+  background: rgba(13, 71, 1, 0.3);
+  margin: 20px 0px;
+  outline: none;
+  box-shadow: 0 0 10px rgba(0,0,0,.5);
+  transition: all .2s;
+}
+
+.videoplayer{
+  background-color:rgba(29, 1, 1, 0.185);
+}
+
+.watch {
+  display: block;
+  border: 1px solid white;
+  border-radius: 4px;
+  position: absolute;
+  bottom: 2em;
+  left: 5em;
+  z-index: 10;
+  color: white;
+  padding: 10px;
+  text-align: center;
+  background: rgba(0, 0, 0, .3);
+  margin: 20px 0px;
+  outline: none;
+  box-shadow: 0 0 10px rgba(0,0,0,.5);
+  transition: all .2s;
+}
+
+.signout {
+  display: block;
+  border: 1px solid white;
+  border-radius: 4px;
+  
+  z-index: 10;
+  color: white;
+  padding: 10px;
+  text-align: center;
+  background: rgba(0, 0, 0, .3);
+  margin:0px 0px;
+  outline: none;
+  box-shadow: 0 0 10px rgba(0,0,0,.5);
+  transition: all .2s;
+}
+
+.movieCard button:hover {
+  background: rgba(255, 255, 255, .8);
+  color: black;
+  box-shadow: 0 0 10px rgba(255,255,255,.5);
+  mix-blend-mode: screen;
+}
+.movieCard button:active {
+  transform: translateY(2px);
+}
+.movieCard p {
+  position: relative;
+  z-index: 10;
+  font-size: .8em;
+  width: 60%;
+  height: 35%;
+}
+
+@media (max-width: 768px) {
+  .movieCard {
+    width: 75%;
+    height: 200px;
+  }
+  .movieCard h1 {
+  font-size: 120%;
+  }
+  .movieCard p {
+    display: none;
+/*     overflow: hidden;
+    width: 100%;
+    height: 30%; */
+  }
+  .watch {
+    margin: 5% auto;
+  }
+}
+@media (max-width: 500px) {
+  .movieCard {
+    width: 100%;
+  }
+}

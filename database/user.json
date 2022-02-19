@@ -1,0 +1,10 @@
+{
+    "id": "001",
+    "firstname": "James",
+    "lastname": "Kennedy",
+    "email": "codingcrazy.ke@gmail.com",
+    "password": "1234",
+    "phoneNumber": "0748091207",
+    "movies":[],
+    "update_at":"none"
+}
